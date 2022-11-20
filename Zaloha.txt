@@ -1,0 +1,173 @@
+===============================================================
+Radši udělám zálohu zastaralých kódů
+Co já vím, třeba se využijí \(-_-)/
+===============================================================
+
+/* if ($_POST) {
+        require_once('Db.php');
+        Db::connect('127.0.0.1', 'drsnadatabaze', 'root', '');
+        $existuje = Db::querySingle('
+            SELECT COUNT(*)
+            FROM uzivatele
+            WHERE jmeno=?
+            LIMIT 1
+        ', $_POST['jmeno']);
+        if ($_POST['jmeno'] = "") {
+          $zprava = 'Jméno nemůže být prázdné.';
+      ?>
+          <section class="reddiv">
+
+            <?php echo $zprava; ?>
+
+          </section>
+          <?php
+        } else {
+
+          if ($existuje) {
+            $zprava = 'Uživatel s touto přezdívkou je již v databázi obsažen.';
+          ?>
+            <section class="reddiv">
+
+              <?php echo $zprava; ?>
+
+            </section>
+            <?php
+          } else {
+            if ($_POST['rok'] != date('Y')) {
+              $zprava = 'Chybně vyplněný antispam.';
+            ?>
+              <section class="reddiv">
+
+                <?php echo $zprava; ?>
+
+              </section>
+            <?php
+            } else if ($_POST['heslo'] != $_POST['heslo_znovu']) {
+              $zprava = 'Hesla nesouhlasí';
+            ?>
+              <section class="reddiv">
+
+                <?php echo $zprava; ?>
+
+              </section>
+              <?php
+            } else {
+
+              require_once('Db.php');
+              if ($_POST) {
+                Db::connect('127.0.0.1', 'drsnadatabaze', 'root', '');
+                $heslo = password_hash($_POST['heslo'], PASSWORD_DEFAULT);
+                Db::query('INSERT INTO uzivatele (Jmeno, Heslo) VALUES (?, ?)', $_POST['jmeno'], $heslo);
+
+                $zprava = 'Úspěšně zaregistrován!';
+              ?>
+                <section class="greendiv">
+
+                  <?php echo $zprava; ?>
+
+                </section>
+      <?php
+              }
+            }
+          }
+        }
+      }*/
+
+
+      /* TOTO FUNGUJE. NEMAZAT!!! */
+      /*if ($_POST) {
+        require_once('Db.php');
+        Db::connect('127.0.0.1', 'drsnadatabaze', 'root', '');
+        $existuje = Db::querySingle('
+            SELECT COUNT(*)
+            FROM uzivatele
+            WHERE jmeno=?
+            LIMIT 1
+        ', $_POST['jmeno']);
+
+        if ($_POST['jmeno'] == "")
+        {
+          $zprava = 'Jméno nemůže být prázdné.';
+      ?>
+          <section class="reddiv">
+
+            <?php echo $zprava; ?>
+
+          </section>
+          <?php
+        }
+        else if ($existuje)
+        {
+          $zprava = 'Uživatel s touto přezdívkou je již v databázi obsažen.';
+          ?>
+            <section class="reddiv">
+
+              <?php echo $zprava; ?>
+
+            </section>
+            <?php 
+        }
+        else 
+        {
+          if ($_POST['rok'] != date('Y')) {
+            $zprava = 'Chybně vyplněný antispam.';
+          ?>
+            <section class="reddiv">
+
+              <?php echo $zprava; ?>
+
+            </section>
+          <?php
+          }
+          else
+          {
+            if ($_POST['heslo'] != $_POST['heslo_znovu']) {
+              $zprava = 'Hesla nesouhlasí';
+            ?>
+              <section class="reddiv">
+
+                <?php echo $zprava; ?>
+
+              </section>
+              <?php
+            } 
+            else
+            {
+              require_once('Db.php');
+                Db::connect('127.0.0.1', 'drsnadatabaze', 'root', '');
+                $heslo = password_hash($_POST['heslo'], PASSWORD_DEFAULT);
+                Db::query('INSERT INTO uzivatele (Jmeno, Heslo) VALUES (?, ?)', $_POST['jmeno'], $heslo);
+
+                $zprava = 'Úspěšně zaregistrován!';
+              ?>
+                <section class="greendiv">
+
+                  <?php echo $zprava; ?>
+
+                </section>
+      <?php 
+            }
+          }
+        }
+
+        
+      }*/
+
+
+       /*if ($_POST) {
+                require_once('Db.php');
+                Db::connect('127.0.0.1', 'drsnadatabaze', 'root', '');
+                $jmeno = Db::querySingle('
+                    SELECT jmeno
+                    FROM uzivatele
+                    WHERE jmeno=?
+                    LIMIT 1
+                ', $_POST['jmeno']);
+                $heslo = Db::querySingle('
+                    SELECT heslo
+                    FROM uzivatele
+                    WHERE heslo=?
+                    LIMIT 1
+                ', $_POST['heslo']);
+                $hashcheck = password_verify($_POST['heslo'], $heslo);
+                echo $heslo;*/
